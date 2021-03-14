@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--Student Tree view -->
+        <record id="studentss_tree_view" model="ir.ui.view">
+            <field name="name">studentss.tree.view</field>
+            <field name="model">student.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="rollno"/>
+                    <field name="student_fees"/>
+                    <field name="dob"/>
+                    <field name="gender"/>
+                    <field name="student_profile"/>
+                    <field name="student_reference"/>
+                    <field name="student_html"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Student Form view -->
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">student.form.view</field>
+            <field name="model">student.student</field>
+            <field name="arch" type="xml">
+                <form string="student">
+                    <sheet>
+                        <group>
+                            <group>
+
+                                <field name="name"/>
+                                <field name="address"/>
+                                <field name="rollno"/>
+
+
+
+                            </group>
+
+                            <group>
+                                <field name="student_fees"/>
+                                <field name="dob"/>
+                                <field name="gender"/>
+                                <field name="student_profile"/>
+                                <field name="student_reference"/>
+                            </group>
+
+                        </group>
+
+                        <!--  student notebook banayu che  -->
+
+                        <notebook colspan="4">
+                                <page name="html_page" string="Html page">
+                                    <field name="student_html"/>
+                                </page>
+                        </notebook>
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Action -->
+        <record id="students_menus_action" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="res_model">student.student</field>
+            <field name="view_mode">tree,form</field>
+
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create The First Student</p>
+            </field>
+        </record>
+
+        <!-- created a parent menu       -->
+        <menuitem id="schools_mains_menu" name="school"/>
+        <!-- created a submenu by inheriting the parent menu       -->
+        <menuitem action="students_menus_action" sequence="1" id="schools_student_menu" name="Student"
+                  parent="new_module_prac.schools_mains_menu"/>
+    </data>
+
+
+</odoo>
