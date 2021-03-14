@@ -24,3 +24,9 @@ class Students(models.Model):
     student_profile=fields.Binary('Profile Picture')
     student_reference=fields.Reference(selection=[('sale.order','Sale Order'),('purchase.order','Purchase Order')])
     student_html=fields.Html('Student Html Page')
+
+class Parents(models.Model):
+    _name = 'parents.parents'
+    _description = 'parents description'
+
+    name=fields.Char()

@@ -62,8 +62,26 @@
             </field>
         </record>
 
+        <!-- Parent Form View  -->
+        
+         <record id="parent_form_view" model="ir.ui.view">
+            <field name="name">parent.form.view</field>
+            <field name="model">parents.parents</field>
+            <field name="arch" type="xml">
+                <form string="parent">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+         </record>
 
-        <!-- Action -->
+
+        <!-- Student Action -->
         <record id="students_menus_action" model="ir.actions.act_window">
             <field name="name">Student</field>
             <field name="res_model">student.student</field>
@@ -74,11 +92,25 @@
             </field>
         </record>
 
+        <!--   Parent Action   -->
+        <record id="parents_action" model="ir.actions.act_window">
+            <field name="name">Parents</field>
+            <field name="res_model">parents.parents</field>
+            <field name="view_mode">tree,form</field>
+
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create The First parent</p>
+            </field>
+        </record>
+
         <!-- created a parent menu       -->
         <menuitem id="schools_mains_menu" name="school"/>
-        <!-- created a submenu by inheriting the parent menu       -->
+        <!-- created a submenu by inheriting the parent menu -->
         <menuitem action="students_menus_action" sequence="1" id="schools_student_menu" name="Student"
                   parent="new_module_prac.schools_mains_menu"/>
+        <!-- created a parent submenu inside student menu  -->
+         <menuitem action="parents_action" sequence="1" id="school_parents_menu" name="parents"
+                  parent="new_module_prac.schools_student_menu"/>
     </data>
 
 
