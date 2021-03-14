@@ -34,8 +34,6 @@
                                 <field name="address"/>
                                 <field name="rollno"/>
 
-
-
                             </group>
 
                             <group>
@@ -66,6 +64,23 @@
                 </form>
             </field>
         </record>
+
+        <!--  Student Search View   -->
+          <record id="students_search_view" model="ir.ui.view">
+            <field name="name">student.search.view</field>
+            <field name="model">student.student</field>
+            <field name="arch" type="xml">
+                <search string="Search Students">
+                    <field name="name"/>
+                    <field name="rollno"/>
+                    <field name="address"/>
+                    <field name="dob"/>
+                    <field name="student_fees"/>
+                    <separator/>
+                    <filter domain="[('gender','=','male')]" name='male' string ="Male"/>
+                </search>
+            </field>
+          </record>
 
         <!-- Parent Form View  -->
 
